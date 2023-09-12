@@ -1,4 +1,5 @@
 import { gql } from "@/utils/gql";
+import ProductCards from "./components/ProductsCards";
 
 type GraphQLResponse = {
   data: {
@@ -55,16 +56,15 @@ const getProducts = async () => {
 
 export default async function Home() {
   const json = await getProducts();
+  const productData = json.data.products.nodes
 
   return (
     <main>
       <h1>Shopify + Next.js 13!</h1>
 
-      <ul>
-        {json.data.products.nodes.map((product: any) => (
-          <li key={product.title}>{product.title}</li>
-        ))}
-      </ul>
+      <div className="w-full">
+        <ProductCards productData={productData} />
+      </div>
     </main>
   );
 }
