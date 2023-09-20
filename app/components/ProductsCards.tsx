@@ -1,8 +1,6 @@
 import Image from "next/image";
 
 const ProductCards = ({ productData }: { productData: any[] }) => {
-    console.log(productData);
-
     // Check if productData is defined and is an array
     if (!Array.isArray(productData)) {
         return <div>No product data available</div>;
@@ -11,8 +9,8 @@ const ProductCards = ({ productData }: { productData: any[] }) => {
     return (
         <div className="w-full">
             <div className="grid grid-cols-2 w-full gap-5">
-                {productData.map(({ title, featuredImage, priceRangeV2 }) => {
-                    return <div className="col-span-2 md:col-span-1 py-8" key={title}>
+                {productData.map(({ title, id, featuredImage, priceRangeV2 }) => {
+                    return <div className="col-span-2 md:col-span-1 py-8" key={id}>
                         <div className="relative">
                                 <Image
                                     src={featuredImage.url} 

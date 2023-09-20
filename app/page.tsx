@@ -6,6 +6,7 @@ type GraphQLResponse = {
     products: {
       nodes: {
         title: string;
+        id: string;
         featureImage: {
           url: string;
         }
@@ -44,6 +45,7 @@ const getProducts = async () => {
           products(first: 6) {
             nodes {
               title
+              id
               featuredImage{
                 url
               }
