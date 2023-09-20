@@ -6,6 +6,15 @@ type GraphQLResponse = {
     products: {
       nodes: {
         title: string;
+        featureImage: {
+          url: string;
+        }
+        priceRangeV2:{
+          maxVariantPrice:{
+            amount:string;
+            currencyCode: string
+          }
+        }
       }[];
     };
   };
@@ -35,6 +44,15 @@ const getProducts = async () => {
           products(first: 6) {
             nodes {
               title
+              featuredImage{
+                url
+              }
+              priceRangeV2{
+                maxVariantPrice{
+                  amount
+                  currencyCode
+                }
+              }
             }
           }
         }
@@ -56,12 +74,10 @@ const getProducts = async () => {
 
 export default async function Home() {
   const json = await getProducts();
-  const productData = json.data.products.nodes
+  const productData: any[] = json.data.products.nodes
 
   return (
     <main>
-      <h1>Shopify + Next.js 13!</h1>
-
       <div className="w-full">
         <ProductCards productData={productData} />
       </div>
