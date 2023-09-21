@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const header = () => {
+const Header = () => {
     const navigation = [
         {
             name: 'Home',
@@ -26,4 +26,4 @@ const header = () => {
      );
 }
  
-export default header;
+export default Header;
