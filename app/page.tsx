@@ -1,5 +1,10 @@
-import { gql } from "@/utils/gql";
+import { gql } from "@/gql";
 import ProductCards from "./components/ProductsCards";
+import { isTypeOnlyExportDeclaration } from "typescript";
+
+type gql = {
+  raw: readonly string[]
+}
 
 type GraphQLResponse = {
   data: {
